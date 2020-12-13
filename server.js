@@ -5,7 +5,7 @@ const request = require('request');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 
-const urlMongo = 'mongodb+srv://mongo:mongo@cluster0.fpbxd.mongodb.net/<Cluster0>?retryWrites=true&w=majority'
+const urlMongo = 'mongodb+srv://user:mongo@cluster0.fpbxd.mongodb.net/<Cluster0>?retryWrites=true&w=majority'
 const apiKey = 'd136e52c1f0eee76445085fa375a3f40';
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather';
 
