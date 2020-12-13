@@ -3,7 +3,7 @@ const MongoClient    = require('mongodb').MongoClient;
 const bodyParser     = require('body-parser');
 const app            = express();
 const request        = require('request');
-const port = 3000;
+const port = process.env.PORT || 5000;
 
 const urlMongo = 'mongodb+srv://user:mongo@cluster0.fafym.mongodb.net/<Cluster0>?retryWrites=true&w=majority';
 const token = 'd136e52c1f0eee76445085fa375a3f40';
