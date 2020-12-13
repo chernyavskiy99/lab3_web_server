@@ -1,13 +1,13 @@
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 5000
-const request = require('request');
-const bodyParser = require('body-parser');
-const MongoClient = require('mongodb').MongoClient;
+const express        = require('express');
+const MongoClient    = require('mongodb').MongoClient;
+const bodyParser     = require('body-parser');
+const app            = express();
+const request        = require('request');
+const port = process.env.PORT || 5000;
 
-const urlMongo = 'mongodb+srv://user:mongo@cluster0.fafym.mongodb.net/<Cluster0>?retryWrites=true&w=majority'
-const apiKey = 'd136e52c1f0eee76445085fa375a3f40';
-const baseURL = 'https://api.openweathermap.org/data/2.5/weather';
+const urlMongo = 'mongodb+srv://user:mongo@cluster0.fafym.mongodb.net/<Cluster0>?retryWrites=true&w=majority';
+const token = 'd136e52c1f0eee76445085fa375a3f40';
+const endpoint = 'https://api.openweathermap.org/data/2.5/';
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -32,7 +32,7 @@ MongoClient.connect(urlMongo, (err, database) => {
 })
 
 app.get('/weather/city', (req, res) => {
-    var url = encodeURI(`${baseURL}?q=${req.query.q}&appid=${apiKey}`)
+    var url = encodeURI(`${endpoint}?q=${req.query.q}&appid=${token}`)
     console.log(`GET ${url}`)
     request.get(url, (err, response, body) => {
         return formRes(res, err, body);
@@ -40,7 +40,7 @@ app.get('/weather/city', (req, res) => {
 });
 
 app.get('/weather/coordinates', (req, res) => {
-    var url = encodeURI(`${baseURL}?lat=${req.query.lat}&lon=${req.query.lon}&appid=${apiKey}`)
+    var url = encodeURI(`${endpoint}?lat=${req.query.lat}&lon=${req.query.lon}&appid=${token}`)
     console.log(`GET ${url}`)
     request.get(url, (err, response, body) => {
         return formRes(res, err, body);
